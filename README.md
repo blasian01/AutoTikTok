@@ -9,9 +9,11 @@ create tiktoks with the power of AI
 - Reddit Stories: @narrativenxt
 
 ## Overview
+Goal of this project is to generate tiktok videos that will be posted daily to different accounts and hopefully over time create small passive income through tiktok creator fund. 
+
 sub-script functions:
-1. It generates a video prompt for a deform video using OpenAI's GPT-3 engine.
-2. It sends the generated prompt to a local Stable Diffusion WebUI server to perform a Deform operation.
+1. generates a video prompt for a deform video using OpenAI's GPT-3 engine.
+2. sends the generated prompt to a local Stable Diffusion WebUI server to perform a Deform operation.
 
 ## Requirements
 - Python 3.x
