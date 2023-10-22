@@ -2,9 +2,11 @@
 create tiktoks with the power of AI
 
 ## Tiktok Accounts Used for this Project
-Car Edits: @autofusionedits
-Anime Edits: @animemosaic
-Reddit Stories: @narrativenxt
+- Car Edits: @autofusionedits
+
+- Anime Edits: @animemosaic
+
+- Reddit Stories: @narrativenxt
 
 ## Overview
 sub-script functions:
