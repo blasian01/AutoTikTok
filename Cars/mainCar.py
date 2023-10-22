@@ -5,6 +5,7 @@ import json
 import io
 import base64
 from PIL import Image, PngImagePlugin
+from api import *
 
 openai.api_key = "OpenAI-API"
 
@@ -150,6 +151,8 @@ print(f"Generating prompt for {random_car}...")
 #print(generated_prompt)
 
 negative_Prompt = "nsfw, nude, humans, people, person, duplicate, weird, glitchy, deformed"
+
+# temp prompt for testing
 generated_prompt = {
 "0": "Drone flying smoothly over a picturesque landscape",
 "50": "Drone descending gently towards a serene river",
@@ -170,48 +173,34 @@ generated_prompt = {
 "800": "Drone landing smoothly on the ground"
 }
 
-#---------------------------------------------------------------------------------------------------------------------------------------
-import webuiapi
+def replace_prompts(file_path, new_prompts):
+    # Load the existing data
+    with open(file_path, 'r') as file:
+        data = json.load(file)
 
-# create API client
-api = webuiapi.WebUIApi()
+    # Replace the 'prompts' field with new values
+    data['prompts'] = new_prompts
 
-# create API client with custom host, port
-api = webuiapi.WebUIApi(host='127.0.0.1', port=7860)
+    # Save the modified data back to the file
+    with open(file_path, 'w') as file:
+        json.dump(data, file, indent=4)  # indent for pretty formatting
 
-# create API client with custom host, port and https
-api = webuiapi.WebUIApi(host='webui.example.com', port=443, use_https=True)
+#----------------------------------------------------------------------------------------------------
+if __name__ == "__main__":
+    # Define the path to the settings file
+    settings_file_path = 'deforum_settings.txt'
 
-# create API client with default sampler, steps.
-api = webuiapi.WebUIApi(sampler='Euler a', steps=20)
-
-# optionally set username, password when --api-auth=username:password is set on webui.
-# username, password are not protected and can be derived easily if the communication channel is not encrypted.
-# you can also pass username, password to the WebUIApi constructor.
-api.set_auth('username', 'password')
-
-result1 = api.txt2img(prompt="cute squirrel",
-                    negative_prompt="ugly, out of frame",
-                    seed=1003,
-                    styles=["anime"],
-                    cfg_scale=7,
-                      sampler_index='DDIM',
-                      steps=30,
-                      enable_hr=True,
-                      hr_scale=2,
-                      hr_upscaler=webuiapi.HiResUpscaler.Latent,
-                      hr_second_pass_steps=20,
-                      hr_resize_x=1536,
-                      hr_resize_y=1024,
-                      denoising_strength=0.4,
-                    )
-
-# images contains the returned images (PIL images)
-result1.images
-# image is shorthand for images[0]
-result1.image
-# info contains text info about the api call
-result1.info
-# info contains paramteres of the api call
-result1.parameters
-result1.image
+    # Call the function to replace the prompts
+    replace_prompts(settings_file_path, generated_prompt)
+    
+    job_id = send_post_request('deforum_settings.txt', 'output_folder')
+    if job_id:
+        print(f"The job_id is: {job_id}")
+        output_directory = get_output_directory(job_id)
+        if output_directory:
+            print(f"The output directory is: {output_directory}")
+            copy_video_to_output_folder(output_directory, 'output_folder')
+    else:
+        print("Failed to get the job_id.")
+        
+    
