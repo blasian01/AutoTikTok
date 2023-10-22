@@ -1,6 +1,13 @@
 # AutoTikTok
 create tiktoks with the power of AI
 
+## Tiktok Accounts Used for this Project
+- Car Edits: @autofusionedits
+
+- Anime Edits: @animemosaic
+
+- Reddit Stories: @narrativenxt
+
 ## Overview
 sub-script functions:
 1. It generates a video prompt for a deform video using OpenAI's GPT-3 engine.
