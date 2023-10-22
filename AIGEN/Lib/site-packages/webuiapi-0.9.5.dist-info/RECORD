@@ -1,0 +1,11 @@
+webuiapi-0.9.5.dist-info/INSTALLER,sha256=zuuue4knoyJ-UwPPXg8fezS7VCrXJQrAP7zeNuwvFQg,4
+webuiapi-0.9.5.dist-info/LICENSE,sha256=Zl3ztitjIWviypQXfHYvUR099Y5IUOh15IVxAOw9XV8,1079
+webuiapi-0.9.5.dist-info/METADATA,sha256=Upn_2hxHru41_xfIW5Okt-OIsOL6voUiHF18oxeO7rU,13773
+webuiapi-0.9.5.dist-info/RECORD,,
+webuiapi-0.9.5.dist-info/REQUESTED,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+webuiapi-0.9.5.dist-info/WHEEL,sha256=_NOXIqFgOaYmlm9RJLPQZ13BJuEIrp5jx5ptRD5uh3Y,92
+webuiapi-0.9.5.dist-info/top_level.txt,sha256=84RprjAaGWFS3oujg2AE1dTHp6o4yGT9isvN6frk5p4,9
+webuiapi/__init__.py,sha256=HD2Cr_rPBcKPga_n97yLFvfLsA5XHVdPGWLqO-Zu3gs,574
+webuiapi/__pycache__/__init__.cpython-310.pyc,,
+webuiapi/__pycache__/webuiapi.cpython-310.pyc,,
+webuiapi/webuiapi.py,sha256=T6_ykJsWwh6JYE9GVJbWfD6wMpjoMNrvqPorFQbcL04,36512
