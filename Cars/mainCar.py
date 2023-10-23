@@ -7,9 +7,13 @@ import io
 import base64
 from PIL import Image, PngImagePlugin
 from moviepy.editor import *
-from Cars.api import *
+from api import *
+import moviepy.editor as mp
+import logging
+from datetime import datetime
 
-openai.api_key = "OpenAI-API"
+
+openai.api_key = "OPENAI-API"
 
 def generate_car_prompt(car_name):
     prompt = f"""Generate a 900-second deform prompt for a cool car edit featuring a {car_name}. Make the format look like this but have the prompt in each text different.{{
@@ -34,12 +38,21 @@ def generate_car_prompt(car_name):
         "900": "Montage of {car_name}'s journey, 'An Ordinary Drive Made Extraordinary' text overlay, epic music crescendo"
     }}"""
 
-    response = openai.Completion.create(
-        engine="text-davinci-003",
-        prompt=prompt,
-        max_tokens=500
-    )
-    return response.choices[0].text.strip()
+    try:
+        completion = openai.Completion.create(
+            engine="text-davinci-003",
+            prompt=prompt,
+            max_tokens=600
+        )
+        text = completion.choices[0].text.strip()
+        print(text)
+        return completion.choices[0].text.strip()
+    except Exception as e:
+        import traceback
+        print(traceback.format_exc())
+        return None
+
+
 
 # List of different cars
 cars = [
@@ -145,35 +158,27 @@ cars = [
     "Audi RS Q8",
 ]
 
-random_car = random.choice(cars)
-
-#Making Diffusion Prompt for car
-print(f"Generating prompt for {random_car}...")
-#generated_prompt = generate_car_prompt(random_car)
-#print(generated_prompt)
-
-negative_Prompt = "nsfw, nude, humans, people, person, duplicate, weird, glitchy, deformed"
-
-# temp prompt for testing
-generated_prompt = {
-"0": "Drone flying smoothly over a picturesque landscape",
-"50": "Drone descending gently towards a serene river",
-"100": "Drone skimming the water's surface, capturing reflections",
-"150": "Drone ascending over lush forests",
-"200": "Drone navigating through a narrow canyon",
-"250": "Drone hovering near a cascading waterfall",
-"300": "Drone capturing a flock of birds in flight",
-"350": "Drone gliding over a tranquil lake",
-"400": "Drone ascending towards a majestic mountain peak",
-"450": "Drone circling around a historic landmark",
-"500": "Drone diving into a bustling cityscape",
-"550": "Drone capturing a breathtaking sunset over the city skyline",
-"600": "Drone soaring high above the city",
-"650": "Drone hovering near a rooftop party",
-"700": "Drone flying over a vibrant fireworks display",
-"750": "Drone returning gracefully to the launch point",
-"800": "Drone landing smoothly on the ground"
-}
+# # temp prompt for testing
+# generated_prompt = {
+# "0": "Robotic explorer booting up on an alien terrain",
+# "50": "Explorer navigating through rocky outcrops",
+# "100": "Explorer analyzing exotic flora with built-in sensors",
+# "150": "Explorer trekking towards a distant water source",
+# "200": "Explorer observing alien fauna near the water",
+# "250": "Explorer collecting water samples for analysis",
+# "300": "Explorer encountering a sandstorm, initiating protective shields",
+# "350": "Explorer traversing through a field of geysers",
+# "400": "Explorer scaling a steep hill to gain a vantage point",
+# "450": "Explorer capturing panoramic views of the alien landscape",
+# "500": "Explorer discovering ancient alien ruins",
+# "550": "Explorer decoding alien inscriptions on the ruins",
+# "600": "Explorer uncovering a hidden underground cave",
+# "650": "Explorer mapping the cave's extensive tunnel network",
+# "700": "Explorer finding rare minerals in the cave",
+# "750": "Explorer transmitting data back to Earth",
+# "800": "Explorer powering down, mission accomplished"
+# }
+#----------------------------------------------------------------------------------------------------
 
 # Replacing prompt with new deform prompt from GPT
 def replace_prompts(file_path, new_prompts):
@@ -199,21 +204,46 @@ def get_random_file(folder_path):
     return os.path.join(folder_path, random.choice(files)) if files else None
 
 def add_audio_to_video(video_path, audio_path, output_path):
-    video = VideoFileClip(video_path)
-    audio = AudioFileClip(audio_path)
-    
+    try:
+        video = VideoFileClip(video_path)
+        audio = AudioFileClip(audio_path)
+    except Exception as e:
+        print(f"Error loading media files: {e}")
+        return
+
+    # Handling different durations between video and audio
     if video.duration < audio.duration:
+        # Looping the video to match the audio duration
         video = video.fx(vfx.loop, duration=audio.duration)
     elif video.duration > audio.duration:
+        # Shortening the video to match the audio duration
         video = video.subclip(0, audio.duration)
 
     video_with_audio = video.set_audio(audio)
-    video_with_audio.write_videofile(output_path, codec="libx264")
 
+    # Ensure the output_path ends with .mp4
+    if not output_path.endswith('.mp4'):
+        output_path += '.mp4'
 
+    try:
+        video_with_audio.write_videofile(output_path, codec="libx264")
+        print(f"Successfully combined {video_path} with {audio_path}. Output saved to {output_path}.")
+    except Exception as e:
+        print(f"Error writing video file: {e}")
+        
 #----------------------------------------------------------------------------------------------------
+
 if __name__ == "__main__":
-    # Define the path to the settings file
+    
+    # picking random car
+    random_car = random.choice(cars)
+
+    #Making Diffusion Prompt for car
+    print(f"Generating prompt for {random_car}...")
+    generated_prompt = generate_car_prompt(random_car)
+    print(generated_prompt)
+    
+    # Setting the path for deforum settings
     settings_file_path = 'deforum_settings.txt'
 
     # Call the function to replace the prompts
@@ -228,15 +258,23 @@ if __name__ == "__main__":
             copy_video_to_output_folder(output_directory, 'output_folder')
     else:
         print("Failed to get the job_id.")
-        
     
-    video_folder = "Cars/output_folder"
-    audio_folder = "Cars/output_folder/Music"
-    output_path = "Cars/FinishedTikToks"
+    # File locations for video and audio
+    video_folder = "output_folder"
+    audio_folder = "output_folder/Music"
+    
+    # Get the current date and format it as YYYYMMDD
+    current_date = datetime.now().strftime('%Y%m%d')
+    
+    # Setting output file path and name for the tiktok
+    output_file_name = f"output_video_{current_date}.mp4"  # Appending the date to the file name
+    output_path = f"output_folder/FinishedTikToks/{output_file_name}"  # Full path to the output file
 
+    # Getting latest video and a random sound to pair with
     latest_video = get_latest_file(video_folder)
     random_audio = get_random_file(audio_folder)
 
+    # If there is video and audio that go together then combine them to make the tiktok
     if latest_video and random_audio:
         add_audio_to_video(latest_video, random_audio, output_path)
         print(f"Successfully combined {latest_video} with {random_audio}. Output saved to {output_path}.")

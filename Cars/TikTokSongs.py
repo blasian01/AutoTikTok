@@ -39,7 +39,7 @@ def download_audio(youtube_link, output_path):
 
 def main():
     playlist_url = 'https://www.youtube.com/playlist?list=PLHg022HMFzFDMNp9xBGy3sARnqxaPl3PG'
-    output_path = 'Cars/output_folder/Music'
+    output_path = 'output_folder/Music'
 
     playlist = Playlist(playlist_url)
 
