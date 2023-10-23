@@ -1,11 +1,13 @@
 import openai
 import random 
+import os
 import requests
 import json
 import io
 import base64
 from PIL import Image, PngImagePlugin
-from api import *
+from moviepy.editor import *
+from Cars.api import *
 
 openai.api_key = "OpenAI-API"
 
@@ -173,6 +175,7 @@ generated_prompt = {
 "800": "Drone landing smoothly on the ground"
 }
 
+# Replacing prompt with new deform prompt from GPT
 def replace_prompts(file_path, new_prompts):
     # Load the existing data
     with open(file_path, 'r') as file:
@@ -184,6 +187,29 @@ def replace_prompts(file_path, new_prompts):
     # Save the modified data back to the file
     with open(file_path, 'w') as file:
         json.dump(data, file, indent=4)  # indent for pretty formatting
+        
+# Functions for creating video with sound
+def get_latest_file(folder_path):
+    files = [f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
+    files.sort(key=lambda x: os.path.getmtime(os.path.join(folder_path, x)), reverse=True)
+    return os.path.join(folder_path, files[0]) if files else None
+
+def get_random_file(folder_path):
+    files = [f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
+    return os.path.join(folder_path, random.choice(files)) if files else None
+
+def add_audio_to_video(video_path, audio_path, output_path):
+    video = VideoFileClip(video_path)
+    audio = AudioFileClip(audio_path)
+    
+    if video.duration < audio.duration:
+        video = video.fx(vfx.loop, duration=audio.duration)
+    elif video.duration > audio.duration:
+        video = video.subclip(0, audio.duration)
+
+    video_with_audio = video.set_audio(audio)
+    video_with_audio.write_videofile(output_path, codec="libx264")
+
 
 #----------------------------------------------------------------------------------------------------
 if __name__ == "__main__":
@@ -204,3 +230,15 @@ if __name__ == "__main__":
         print("Failed to get the job_id.")
         
     
+    video_folder = "Cars/output_folder"
+    audio_folder = "Cars/output_folder/Music"
+    output_path = "Cars/FinishedTikToks"
+
+    latest_video = get_latest_file(video_folder)
+    random_audio = get_random_file(audio_folder)
+
+    if latest_video and random_audio:
+        add_audio_to_video(latest_video, random_audio, output_path)
+        print(f"Successfully combined {latest_video} with {random_audio}. Output saved to {output_path}.")
+    else:
+        print("Couldn't find files to process.")
