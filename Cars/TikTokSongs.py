@@ -3,6 +3,7 @@ from concurrent.futures import ThreadPoolExecutor
 import os
 import re
 import ssl
+# This program will be used to scrape youtube plalists to grab songs that you want to use in the video generation
 
 ssl._create_default_https_context = ssl._create_unverified_context
 

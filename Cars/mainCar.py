@@ -13,7 +13,7 @@ import logging
 from datetime import datetime
 
 
-openai.api_key = "OPENAI-API"
+openai.api_key = "OPEN_API_KEY"
 
 def generate_car_prompt(car_name):
     prompt = f"""Generate a 900-second deform prompt for a cool car edit featuring a {car_name}. Make the format look like this but have the prompt in each text different.{{
