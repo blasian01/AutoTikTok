@@ -1,5 +1,5 @@
 # AutoTikTok
-create tiktoks with the power of AI
+Automate the creation tiktoks with the power of AI
 
 ## Tiktok Accounts Used for this Project
 - Car Edits: @autofusionedits
