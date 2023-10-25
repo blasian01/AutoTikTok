@@ -98,7 +98,7 @@ if __name__ == "__main__":
         print(f"The output directory is: {output_directory}")
         if output_directory:
             print(f"The output directory is: {output_directory}")
-            copy_video_to_output_folder(output_directory, 'output_folder/RawVideo')
+            copy_video_to_output_folder(output_directory, 'output_folder/RawVideo') # not pulling correct video file path 
     else:
         print("Failed to get the job_id.")
     
