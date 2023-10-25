@@ -6,33 +6,27 @@ import json
 # This program is used to test the functionality of getting a new prompt from Chatgpt
 
 def generate_prompt(sentence):
-    api_key = os.environ.get('OPENAI_API_KEY')
+    openai.api_key = "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"
+    print("sentence was this: " + sentence)
     
-    headers = {
-            'Authorization': f'Bearer {api_key}',
-            'Content-Type': 'application/json',
-        }
-
-    data = {
-        'prompt': "Based on the following sentence, create a related new prompt: " + sentence,
-        'model': "gpt-2.1-turbo",
-        'max_tokens': 50,
-        'temperature': 0.7
-    }
+    model = "text-davinci-003"
     
-    try:
-        response = requests.post('https://api.openai.com/v1/engines/davinci/completions', headers=headers, json=data)
-        response.raise_for_status() 
-        
-        result = response.json()
-        return result['choices'][0]['text'].strip()
-        
-    except requests.RequestException as e:
-        print(f"Request failed: {e}")
-    except KeyError:
-        print(f"Unexpected response structure: {result}")
+    response = openai.Completion.create(
+    engine=model,
+    prompt="Please rewrite the following sentence while keeping a similar length and without using quotations: " + sentence,
+    max_tokens=1000,
+    n = 1,
+    )
+    
+    replyGPT = response.choices[0].text
+    print("getting GPT reply: " + replyGPT)
+    return replyGPT
 
-    return None
+def prepare_sentence(sentence):
+    # Replace double quotes with single quotes
+    sentence = sentence.replace('"', "'")
+    
+    return sentence
 
 cars = ["Porsche gt3", "Ferrari 488", "Lamborghini Huracan"]
 
@@ -69,73 +63,116 @@ if __name__ == "__main__":
 #Changing the sentences using chat
 #---------------------------------------------------------------------------------------------------------------
     
-    change_sentence1 = generate_prompt(sentence1)
+#     change_sentence1 = generate_prompt(sentence1)
+#     prepared_sentence1 = prepare_sentence(change_sentence1)
 
-    change_sentence2 = generate_prompt(sentence2)
+#     change_sentence2 = generate_prompt(sentence2)
+#     prepared_sentence2 = prepare_sentence(change_sentence2)
 
-    change_sentence3 = generate_prompt(sentence3)
+#     change_sentence3 = generate_prompt(sentence3)
+#     prepared_sentence3 = prepare_sentence(change_sentence3)
 
-    change_sentence4 = generate_prompt(sentence4)
+#     change_sentence4 = generate_prompt(sentence4)
+#     prepared_sentence4 = prepare_sentence(change_sentence4)
+    
+#     change_sentence5 = generate_prompt(sentence5)
+#     prepared_sentence5 = prepare_sentence(change_sentence5)
+    
+# #---------------------------------------------------------------------------------------------------------------
 
-    change_sentence5 = generate_prompt(sentence5)
+#     change_sentence6 = generate_prompt(sentence6)
+#     prepared_sentence6 = prepare_sentence(change_sentence6)
     
-#---------------------------------------------------------------------------------------------------------------
+#     change_sentence7 = generate_prompt(sentence7)
+#     prepared_sentence7 = prepare_sentence(change_sentence7)
+    
+#     change_sentence8 = generate_prompt(sentence8)
+#     prepared_sentence8 = prepare_sentence(change_sentence8)
+    
+#     change_sentence9 = generate_prompt(sentence9)
+#     prepared_sentence9 = prepare_sentence(change_sentence9)
+    
+#     change_sentence10 = generate_prompt(sentence10)
+#     prepared_sentence10 = prepare_sentence(change_sentence10)
+    
+# #---------------------------------------------------------------------------------------------------------------
+    
+#     change_sentence11 = generate_prompt(sentence11)
+#     prepared_sentence11 = prepare_sentence(change_sentence11)
+    
+#     change_sentence12 = generate_prompt(sentence12)
+#     prepared_sentence12 = prepare_sentence(change_sentence12)
 
-    change_sentence6 = generate_prompt(sentence6)
-    
-    change_sentence7 = generate_prompt(sentence7)
-    
-    change_sentence8 = generate_prompt(sentence8)
-    
-    change_sentence9 = generate_prompt(sentence9)
-    
-    change_sentence10 = generate_prompt(sentence10)
-    
-#---------------------------------------------------------------------------------------------------------------
-    
-    change_sentence11 = generate_prompt(sentence11)
-    
-    change_sentence12 = generate_prompt(sentence12)
-
-    change_sentence13 = generate_prompt(sentence13)
+#     change_sentence13 = generate_prompt(sentence13)
+#     prepared_sentence13 = prepare_sentence(change_sentence13)
  
-    change_sentence14 = generate_prompt(sentence14)
+#     change_sentence14 = generate_prompt(sentence14)
+#     prepared_sentence14 = prepare_sentence(change_sentence14)
     
-    change_sentence15 = generate_prompt(sentence15)
+#     change_sentence15 = generate_prompt(sentence15)
+#     prepared_sentence15 = prepare_sentence(change_sentence15)
     
-#---------------------------------------------------------------------------------------------------------------
+# #---------------------------------------------------------------------------------------------------------------
 
-    change_sentence16 = generate_prompt(sentence16)
+#     change_sentence16 = generate_prompt(sentence16)
+#     prepared_sentence16 = prepare_sentence(change_sentence16)
 
-    change_sentence17 = generate_prompt(sentence17)
+#     change_sentence17 = generate_prompt(sentence17)
+#     prepared_sentence17 = prepare_sentence(change_sentence17)
     
-    change_sentence18 = generate_prompt(sentence18)
+#     change_sentence18 = generate_prompt(sentence18)
+#     prepared_sentence18 = prepare_sentence(change_sentence18)
     
-    change_sentence19 = generate_prompt(sentence19)
+#     change_sentence19 = generate_prompt(sentence19)
+#     prepared_sentence19 = prepare_sentence(change_sentence19)
     
- #---------------------------------------------------------------------------------------------------------------   
+#  #---------------------------------------------------------------------------------------------------------------   
     
+#     segments_str = f'''{{
+#         "0": "{prepared_sentence1}",
+#         "50": "{prepared_sentence2}",
+#         "100": "{prepared_sentence3}",
+#         "150": "{prepared_sentence4}",
+#         "200": "{prepared_sentence5}", 
+#         "250": "{prepared_sentence6}", 
+#         "300": "{prepared_sentence7}", 
+#         "350": "{prepared_sentence8}",
+#         "400": "{prepared_sentence9}",
+#         "450": "{prepared_sentence10}",
+#         "500": "{prepared_sentence11}",
+#         "550": "{prepared_sentence12}",
+#         "600": "{prepared_sentence13}",
+#         "650": "{prepared_sentence14}",
+#         "700": "{prepared_sentence15}",
+#         "750": "{prepared_sentence16}",
+#         "800": "{prepared_sentence17}",
+#         "850": "{prepared_sentence18}",
+#         "900": "{prepared_sentence19}"
+# }}'''
+
+
     segments_str = f'''{{
-        "0": "{change_sentence1}",
-        "50": "{change_sentence2}",
-        "100": "{change_sentence3}",
-        "150": "{change_sentence4}",
-        "200": "{change_sentence5}", 
-        "250": "{change_sentence6}", 
-        "300": "{change_sentence7}", 
-        "350": "{change_sentence8}",
-        "400": "{change_sentence9}",
-        "450": "{change_sentence10}",
-        "500": "{change_sentence11}",
-        "550": "{change_sentence12}",
-        "600": "{change_sentence13}",
-        "650": "{change_sentence14}",
-        "700": "{change_sentence15}",
-        "750": "{change_sentence16}",
-        "800": "{change_sentence17}",
-        "850": "{change_sentence18}",
-        "900": "{change_sentence19}"
+        "0": "{sentence1}",
+        "50": "{sentence2}",
+        "100": "{sentence3}",
+        "150": "{sentence4}",
+        "200": "{sentence5}", 
+        "250": "{sentence6}", 
+        "300": "{sentence7}", 
+        "350": "{sentence8}",
+        "400": "{sentence9}",
+        "450": "{sentence10}",
+        "500": "{sentence11}",
+        "550": "{sentence12}",
+        "600": "{sentence13}",
+        "650": "{sentence14}",
+        "700": "{sentence15}",
+        "750": "{sentence16}",
+        "800": "{sentence17}",
+        "850": "{sentence18}",
+        "900": "{sentence19}"
 }}'''
+    print(sentence1)
     
     print(segments_str)
     
