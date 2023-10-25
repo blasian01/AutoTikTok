@@ -26,6 +26,12 @@ def prepare_sentence(sentence):
     # Replace double quotes with single quotes
     sentence = sentence.replace('"', "'")
     
+    # Remove newline characters
+    sentence = sentence.replace('\n', ' ')
+    
+    # Remove question marks
+    sentence = sentence.replace('?', '')
+    
     return sentence
 
 cars = ["Porsche gt3", "Ferrari 488", "Lamborghini Huracan"]
