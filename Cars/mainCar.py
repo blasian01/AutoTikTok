@@ -81,7 +81,6 @@ if __name__ == "__main__":
     #subprocess.run(["python", "prompt.py"])
     with open("output_folder/prompt.txt") as f:
         generated_prompt = f.read()
-    print(generated_prompt)
     generated_prompt = generated_prompt + ","
 
     
@@ -92,13 +91,14 @@ if __name__ == "__main__":
     # Call the function to replace the prompts
     replace_prompts(settings_file_path, promptFile) # Failing to properly input the new prompt
     
-    job_id = send_post_request('deforum_settings.txt', 'output_folder') 
+    job_id = send_post_request('deforum_settings.txt', 'output_folder/RawVideo') 
     if job_id:
         print(f"The job_id is: {job_id}")
         output_directory = get_output_directory(job_id)
+        print(f"The output directory is: {output_directory}")
         if output_directory:
             print(f"The output directory is: {output_directory}")
-            copy_video_to_output_folder(output_directory, 'output_folder')
+            copy_video_to_output_folder(output_directory, 'output_folder/RawVideo')
     else:
         print("Failed to get the job_id.")
     

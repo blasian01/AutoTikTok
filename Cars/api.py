@@ -36,6 +36,7 @@ def send_post_request(settings_file_path, output_folder):
         # Extract job_id from the response directly instead of reading the output.txt file again
         response_data = response.json()
         job_id = response_data["job_ids"][0]
+        # print(job_id)
         
         return job_id  # Return the job_id
     else:
