@@ -1,59 +1,21 @@
 {
-        "0": "
-
-A shiny red Ferrari 488 gleamed in the bright morning sun in an open lot outside Central Park on an ordinary Tuesday.",
-        "50": "
-
-On a cool, foggy evening, a Ferrari 488 sat at a stoplight, ready to roll.",
-        "100": "
-
-The orange Ferrari 488 raced down the highway at twilight, glimmering sunlight illuminating its sleek curves, as the afternoon showers left the pavement glistening.",
-        "150": "ured across its doors
-
-The gleaming red Ferrari 488, its 'Living on the Edge' textured doors glinting in the moonlight, streaked through the tunnel late on a wet and windy winter's night.",
-        "200": "
-
-An attention-commanding Ferrari 488 cruised down the open road on a dreary, overcast afternoon, its sleek contours easily outshining other sports cars in its vicinity.", 
-        "250": "
-
-The midnight blue Ferrari 488 stalled on the late afternoon rain-drenched roadside, bearing the ominous words 'Something's Off'.", 
-        "300": "ured sky
-
-As the sun began to sink, a bright red Ferrari 488 gleamed in the fading light alongside a collection of other high-powered sports cars at a picturesque overlook. The sky was an array of vibrant colors in a 'Showdown' pattern, casting the perfect backdrop for this magnificent display.", 
-        "350": "
-
-At dawn, a Ferrari 488 bathed in the golden glow of a streetlight stood against the backdrop of an overcast sky, setting the scene for a critical moment.",
-        "400": "
-
-Early in the morning, a fog blanketed the landscape below a pedestrian bridge, when an observant traveler noticed a red Ferrari 488 driving through the murk, its text reading 'Unexpected Savior'.",
-        "450": "
-
-On a sunny afternoon in May at 3pm, a Ferrari 488 was parked near a beach, surrounded by the sound of conversation. The salty sea air helped to clear the late afternoon sky.",
-        "500": "
-
-At twilight, a red Ferrari 488 was parked at an overlook, with the driver reviewing all of the highlights of his journey while a blanket of clouds provided a powerful backdrop. He then quickly opened 'The Revelation' text to read it one last time before driving off into the night.",
-        "550": "
-
-A Ferrari 488 in the parking lot of a mall on a clear evening just before sundown was surrounded by other luxury sports cars as its driver texted 'Misunderstanding Cleared'.",
-        "600": "ured on the hood
-
-A Ferrari 488 sat parked in a driveway late at night on a moonlit autumn evening in San Francisco, its hood textured with the phrase 'Close Call' peeking out from the fog.",
-        "650": "
-
-On a rainy evening in the garage, a Ferrari 488 sat in the dimly lit space, missing items noted, and the words 'The Real Loss' graffitied across the side of the car.",
-        "700": "
-
-The sun was just beginning to set, and a Ferrari 488 glistened in the orange and pink sky from underneath a tall leafy tree in the middle of a park. The car's crimson paint shimmered in the fading light, almost as if it were quietly reflecting on the day.",
-        "750": "
-
-At 8am on an overcast morning, a deep red Ferrari 488 sat quietly in the empty parking lot beneath an ominous sky, its reflective paint job catching the dim morning light like the words of the graffiti scrawled along one side of its hood: 'Lesson Learned'.",
-        "800": "
-
-A sleek Ferrari 488 sparkled in the sun's rays on a balmy afternoon as it gleamed beneath the spritz of the power-washing at 'New Beginnings' auto shop.",
-        "850": "
-
-A midnight blue Ferrari 488 was parked at the edge of a cliff overlooking the city skyline at twilight, with the 'Drive Safe, Capture Wisely' text illuminated by a full moon amidst the starry night sky.",
-        "900": "
-
-It was a sunny autumn afternoon when a Ferrari 488 glided down the winding country roads of upstate New York, with epic music crescendo and a text overlay reading 'An Ordinary Drive Made Extraordinary'."
+        "0": "  A Ferrari 488 glistened brightly in the lot on an ordinary early afternoon, the sun shining through the clear sky onto its striking red exterior.",
+        "50": "  At dusk, the Ferrari 488 idled peacefully at the stoplight beneath the cloudy sky, ready to roll.",
+        "100": "  Driving a Ferrari 488 on the highway at sunset, the gorgeous evening light illuminated the car while the sun set, painting the sky in shades of pink and orange.",
+        "150": "  The midnight sky bleached silvery-white from the reflected beams of a waning gibbous moon as the Ferrari 488 zipped through the Rebibbia Tunnel in Rome, Italy, shortly after 11:30 PM on a humid August night, its impressive engine purring 'Living on",
+        "200": "  On a lonely highway, the sleek Ferrari 488 cruised, its crimson paint bright against the grey overcast sky of early morning. Surrounded by the low hum of distant sports cars, the powerful engine effortlessly commanded attention.", 
+        "250": " was written on the back window  It was a Monday evening in October, near sunset, and stormy weather had soaked the roads. In the midst of the rain, a Ferrari 488 was stopped on the side of the road with 'Something's Off' written on the back window.", 
+        "300": " overlay  At dusk, a Ferrari 488 sits parked at a scenic overlook in the midst of several other sports cars, the sun casting a dramatic orange glow across the sky. An orange overlay reading 'Showdown' completes the scene.", 
+        "350": "  At dawn, a Ferrari 488 was parked under a streetlight near 'Critical Moments' as a light rain fell.",
+        "400": " spray painted on its side  On a foggy early morning, a pedestrian bridge overlooking a Tesla 488 reveals the words 'Unexpected Savior' spray painted along its side.",
+        "450": "  On a sunny afternoon, a red Ferrari 488 was parked near a beach, and a conversation about the document 'Clearing the Air' was taking place nearby.",
+        "500": "  The sun set at twilight, warmly caressing the Ferrari 488 sitting at an overlook in the serene weather, as its driver fondly reviewed the highlights of their journey -- 'The Revelation' text in hand.",
+        "550": "  The sun was setting, casting a warm orange glow over the parking lot. Amidst the quiet hum of traffic, a Ferrari 488 was parked between two other sleek and glossy sports cars, and a text message reading 'Misunderstanding Cleared' illuminated their dashboards.",
+        "600": "  On a damp, mid-afternoon Monday, a midnight-blue Ferrari 488 sat parked in a driveway, reflecting the shimmer of the moonlight. As a text titled 'Close Call' popped up on the nearby phone, the car seemed to whisper a prayer of relief.",
+        "650": "  On the rainy evening of 'The Real Loss', the Ferrari 488 sitting in the garage had several missing items noted.",
+        "700": "  At sunset, a Ferrari 488 was parked under a tree in a clearing, soaking in its last moments of sunlight as the sky turned shades of pink and orange. Filled with a sense of contentment, it reflected on the day.",
+        "750": "  The morning dew settled on the sleek, red Ferrari 488 in the empty parking lot, its metallic surface glittering in the overcast light. A moment of clarity swept over, manifesting itself in the phrase, 'Lesson Learned' etched on the car in the stillness of",
+        "800": "  The sun glinted off the slick red paint of the Ferrari 488 as it was being hosed down on a hot summer afternoon at 'New Beginnings' auto repair shop.",
+        "850": "  At twilight, a bright red Ferrari 488 was parked with a perfect view of the city skyline. Rain was lightly misting down, and the neon 'Drive Safe, Capture Wisely' sign on the other side of the street illuminated the car brightly.",
+        "900": "  On a sunny Saturday afternoon, a matte silver Ferrari 488 cruises steadily through the winding hills of the Italian countryside, enveloped in a beautiful soundtrack of rising apex strings and synths. As the car drives, its glossy paint job gleams in the sunlight with dramatic lighting and misty"
 }
