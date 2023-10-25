@@ -7,7 +7,7 @@ import json
 
 def generate_prompt(sentence):
     # api_key = os.environ.get("OPENAI_API_KEY")
-    openai.api_key = "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"
+    openai.api_key = "OPENAI_API_KEY"
     print("sentence was this: " + sentence)
     
     model = "text-davinci-003"
